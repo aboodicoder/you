@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Are An Idiot</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+      overflow: hidden;
+      flex-direction: column;
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+      cursor: pointer;
+    }
+    h1 {
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <img id="idiotAnimation" src="you-are-an-idiot.gif" alt="You Are An Idiot Animation">
+  <audio id="idiotSound" src="you-are-an-idiot.mp3"></audio>
+  <h1>Click the animation to play the sound!</h1>
+
+  <script>
+    const animation = document.getElementById('idiotAnimation');
+    const sound = document.getElementById('idiotSound');
+
+    animation.addEventListener('click', () => {
+      sound.currentTime = 0; // restart sound if already playing
+      sound.play();
+    });
+
+    // Optional: auto-play on page load
+    window.addEventListener('load', () => {
+      sound.play().catch(() => {
+        console.log("Autoplay blocked. Click the image to play sound.");
+      });
+    });
+  </script>
+</body>
+</html>
